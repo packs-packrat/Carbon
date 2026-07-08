@@ -69,7 +69,17 @@ public partial class Community
 
 	public void MarkServerInitialized(bool wants)
 	{
+		if (wants && !IsServerInitialized)
+		{
+			Oxide.Plugins.Timers.FireDueStartupTimers();
+		}
+
 		IsServerInitialized = wants;
+
+		if (wants)
+		{
+			Oxide.Plugins.Timers.ConvertRemainingStartupTimersToInvokes();
+		}
 	}
 	public void ClearCommands(bool all = false)
 	{

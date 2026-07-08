@@ -44,6 +44,8 @@ public class CarbonProcessor : BaseProcessor, ICarbonProcessor
 	}
 	public void Update()
 	{
+		Oxide.Plugins.Timers.UpdateStartupTimers();
+
 		if (CurrentFrameQueue.Count <= 0) return;
 
 		var lockObject = CurrentFrameLock;
